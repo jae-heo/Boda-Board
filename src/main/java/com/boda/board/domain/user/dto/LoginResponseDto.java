@@ -1,11 +1,12 @@
 package com.boda.board.domain.user.dto;
 
 import com.boda.board.domain.user.domain.User;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class LoginResponseDto {
 
     private String email;
