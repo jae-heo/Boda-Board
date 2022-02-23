@@ -5,6 +5,7 @@ import com.boda.board.domain.board.dto.BoardResponseMessage;
 import com.boda.board.domain.board.dto.CreateBoardRequestDto;
 import com.boda.board.domain.board.service.BoardService;
 import com.boda.board.global.dto.ResponseDto;
+import io.swagger.annotations.Api;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/boards")
+@Api(tags = {"Board API"})
 public class BoardApiController {
 
     private final BoardService boardService;
