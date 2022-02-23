@@ -1,6 +1,8 @@
 package com.boda.board.domain.board.service;
 
+import com.boda.board.domain.board.domain.Board;
 import com.boda.board.domain.board.dto.BoardResponseDto;
+import com.boda.board.domain.board.dto.CreateBoardRequestDto;
 import com.boda.board.domain.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,4 +25,10 @@ public class BoardService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void createBoard(CreateBoardRequestDto requestDto) {
+        boardRepository.save(Board.builder()
+                .title(requestDto.getTitle())
+                .build());
+    }
 }

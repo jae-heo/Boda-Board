@@ -2,7 +2,11 @@ package com.boda.board.domain.post.repository;
 
 import com.boda.board.domain.post.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
-
+    List<Post> findByBoardId(@Param("boardId")Integer boardId);
 }
