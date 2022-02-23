@@ -3,6 +3,7 @@ package com.boda.board.domain.user.controller;
 import com.boda.board.domain.user.dto.*;
 import com.boda.board.global.dto.ResponseDto;
 import com.boda.board.domain.user.service.UserService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
+@Api(tags = {"User API"})
 public class UserApiController {
 
     private final UserService userService;
