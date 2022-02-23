@@ -20,10 +20,6 @@ public class User extends BaseTimeEntity {
         USER, ADMIN
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     @Column(nullable = false)
     private String email;
 

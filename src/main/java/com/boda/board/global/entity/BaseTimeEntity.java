@@ -1,19 +1,27 @@
 package com.boda.board.global.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass; //해당 추상클래스가 가지고 있는 멤버들도 JPA 에서 COLUMN 으로 인식시키기 위함.
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseTimeEntity {
+
+    @Setter(value = AccessLevel.NONE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @CreatedDate
     @Column(updatable = false)
@@ -21,4 +29,15 @@ public abstract class BaseTimeEntity {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+
+//    @PrePersist
+//    public void onPrePersist(){
+//        this.createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+//        this.modifiedDate = this.createdDate;
+//    }
+//
+//    @PreUpdate
+//    public void onPreUpdate(){
+//        this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
+//    }
 }
