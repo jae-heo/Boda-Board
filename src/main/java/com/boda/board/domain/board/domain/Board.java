@@ -13,10 +13,6 @@ import javax.persistence.*;
 @Entity
 public class Board extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     @Column(nullable = false)
     private String title;
 
