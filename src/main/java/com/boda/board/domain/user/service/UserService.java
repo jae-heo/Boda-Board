@@ -23,7 +23,7 @@ public class UserService {
                 .email(dto.getEmail())
                 .password(dto.getPassword())
                 .username(dto.getUsername())
-                .grade(dto.getGrade())
+                .type(dto.getType())
                 .build()));
     }
 

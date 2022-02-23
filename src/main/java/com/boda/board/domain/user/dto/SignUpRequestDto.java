@@ -10,5 +10,5 @@ public class SignUpRequestDto {
     private String email;
     private String password;
     private String username;
-    private User.Grade grade;
+    private User.Type type;
 }

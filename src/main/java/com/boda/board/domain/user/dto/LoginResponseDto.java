@@ -12,12 +12,12 @@ public class LoginResponseDto {
     private String email;
     private String password;
     private String username;
-    private User.Grade grade;
+    private User.Type grade;
 
     public LoginResponseDto(User user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.username = user.getUsername();
-        this.grade = user.getGrade();
+        this.grade = user.getType();
     }
 }
