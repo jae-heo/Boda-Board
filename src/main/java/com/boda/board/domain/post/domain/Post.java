@@ -1,6 +1,7 @@
 package com.boda.board.domain.post.domain;
 
 import com.boda.board.domain.board.domain.Board;
+import com.boda.board.domain.post.dto.PostRequestDto;
 import com.boda.board.domain.user.domain.User;
 import com.boda.board.global.entity.BaseTimeEntity;
 import lombok.*;
@@ -41,4 +42,10 @@ public class Post extends BaseTimeEntity {
     public void attachToBoard(Board board){
         this.board = board;
     }
+
+    public void update(PostRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+    }
+
 }
