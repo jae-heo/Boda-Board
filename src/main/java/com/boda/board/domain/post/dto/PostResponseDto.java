@@ -7,11 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class PostGetResponseDto {
+public class PostResponseDto {
 
     private Integer id;
 
@@ -25,7 +24,7 @@ public class PostGetResponseDto {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime lastModified;
 
-    public PostGetResponseDto(Post post) {
+    public PostResponseDto(Post post) {
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();

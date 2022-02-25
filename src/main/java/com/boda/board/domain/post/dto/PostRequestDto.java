@@ -1,15 +1,13 @@
 package com.boda.board.domain.post.dto;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class PostCreateRequestDto {
+public class PostRequestDto {
     private String title;
     private String content;
     private String author;
     private Integer boardId;
-
 }
