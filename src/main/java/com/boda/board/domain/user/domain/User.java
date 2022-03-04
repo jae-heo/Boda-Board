@@ -1,7 +1,7 @@
 package com.boda.board.domain.user.domain;
 
 import com.boda.board.domain.post.domain.Post;
-import com.boda.board.domain.user.dto.SignUpRequestDto;
+import com.boda.board.domain.user.dto.UserRequestDto;
 import com.boda.board.global.entity.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,7 +32,7 @@ public class User extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private Type type;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "author")
     private List<Post> posts = new ArrayList<>();
 
     @Builder
@@ -43,14 +43,10 @@ public class User extends BaseTimeEntity {
         this.type = type;
     }
 
-    public void updateUser(SignUpRequestDto userSignUpDto){
+    public void updateUser(UserRequestDto userSignUpDto){
         this.username = userSignUpDto.getUsername();
         this.email = userSignUpDto.getEmail();
         this.password = userSignUpDto.getPassword();
         this.type = userSignUpDto.getType();
-    }
-
-    public void addPost(Post post) {
-        this.posts.add(post);
     }
 }

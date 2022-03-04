@@ -18,27 +18,27 @@ public class Post extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private String author;
+    @Column(name = "user_id")
+    private Integer authorId;
+
+    @Column(name = "board_id")
+    private Integer boardId;
 
     @Setter(value = AccessLevel.NONE)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false)
-    private User user;
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User author;
 
     @Setter(value = AccessLevel.NONE)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id", insertable = false)
+    @JoinColumn(name = "board_id", insertable = false, updatable = false)
     private Board board;
 
     @Builder
-    public Post(String title, String content, String author) {
+    public Post(String title, String content, Integer authorId, Integer boardId) {
         this.title = title;
         this.content = content;
-        this.author = author;
-    }
-
-    public void attachToBoard(Board board){
-        this.board = board;
+        this.authorId = authorId;
+        this.boardId = boardId;
     }
 }

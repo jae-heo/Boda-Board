@@ -1,6 +1,6 @@
 package com.boda.board.domain.user.service;
 
-import com.boda.board.domain.user.dto.SignUpRequestDto;
+import com.boda.board.domain.user.dto.UserRequestDto;
 import com.boda.board.domain.user.dto.SignUpResponseDto;
 import com.boda.board.domain.user.repository.UserRepository;
 import com.boda.board.domain.user.domain.User;
@@ -18,7 +18,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public SignUpResponseDto signUp(SignUpRequestDto dto){
+    public SignUpResponseDto signUp(UserRequestDto dto){
         return new SignUpResponseDto(userRepository.save(User.builder()
                 .email(dto.getEmail())
                 .password(dto.getPassword())

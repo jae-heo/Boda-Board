@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 public class PostCreateRequestDto {
     private String title;
     private String content;
-    private String author;
+    private Integer authorId;
     private Integer boardId;
-
 }

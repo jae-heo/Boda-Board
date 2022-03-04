@@ -1,6 +1,7 @@
 package com.boda.board.domain.post.controller;
 
 import com.boda.board.domain.post.dto.PostCreateRequestDto;
+import com.boda.board.domain.post.dto.PostGetResponseDto;
 import com.boda.board.domain.post.service.PostService;
 import com.boda.board.global.dto.ResponseDto;
 import io.swagger.annotations.Api;
@@ -8,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,7 +27,7 @@ public class PostApiController {
     }
 
     @GetMapping
-    public ResponseEntity<ResponseDto> findByBoardId(@RequestParam @Nullable Integer boardId) {
+    public ResponseEntity<ResponseDto<List<PostGetResponseDto>>> findByBoardId(@RequestParam @Nullable Integer boardId) {
         return ResponseEntity.ok(ResponseDto.create("게시글 목록을 불러왔습니다.", postService.findByBoardId(boardId)));
     }
 }

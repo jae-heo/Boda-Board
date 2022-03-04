@@ -6,10 +6,8 @@ import com.boda.board.domain.post.domain.Post;
 import com.boda.board.domain.post.dto.PostGetResponseDto;
 import com.boda.board.domain.post.dto.PostCreateRequestDto;
 import com.boda.board.domain.post.repository.PostRepository;
-import com.boda.board.global.dto.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -26,15 +24,15 @@ public class PostService {
 
     @Transactional
     public void createPost(PostCreateRequestDto requestDto) {
-        Board board = boardRepository.findById(requestDto.getBoardId()).orElseThrow(() -> new RuntimeException("없는 보드입니다."));
+        Board board = boardRepository.findById(requestDto.getBoardId())
+                .orElseThrow(() -> new RuntimeException("없는 보드입니다."));
 
         Post post = postRepository.save(Post.builder()
                 .title(requestDto.getTitle())
                 .content(requestDto.getContent())
-                .author(requestDto.getAuthor())
+                .authorId(requestDto.getAuthorId())
+                .boardId(requestDto.getBoardId())
                 .build());
-
-        post.attachToBoard(board);
     }
 
     @Transactional
